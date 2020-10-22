@@ -187,7 +187,7 @@ service:
   annotations: {}
   ## Specify a service type
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types
-  type: NodePort
+  type: ClusterIP
   port: 3307
   # nodePort: 32000
   # loadBalancerIP:
