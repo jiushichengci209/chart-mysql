@@ -3,13 +3,6 @@ kind: Ingress
 metadata:
   name: {{ template "mysql.fullname" . }}
   namespace: {{ .Release.Namespace }}
-  annotations:
-{{- if .Values.ingress.annotations }}
-{{ toYaml .Values.ingress.annotations | indent 4 }}
-{{- end }}
-{{- if and (.Values.metrics.enabled) (.Values.metrics.annotations) }}
-{{ toYaml .Values.metrics.annotations | indent 4 }}
-{{- end }}
 spec:
   rule: 
   - host: {{ .Values.ingress.host }}
