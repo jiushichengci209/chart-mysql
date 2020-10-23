@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Ingress
+metadata:
+  name: {{ template "mysql.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ template "mysql.fullname" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+{{- if .Values.ingress.annotations }}
+{{ toYaml .Values.ingress.annotations | indent 4 }}
+{{- end }}
+{{- if and (.Values.metrics.enabled) (.Values.metrics.annotations) }}
+{{ toYaml .Values.metrics.annotations | indent 4 }}
+{{- end }}
+spec:
+  rule: 
+  - host: {{ template "mysql.fullname" . }}.com
+    http:
+      paths: 
+      - backend: 
+          serviceName: {{ template "mysql.fullname" . }}
+          servicePort: {{ .Values.service.port }}
