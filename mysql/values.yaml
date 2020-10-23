@@ -187,9 +187,9 @@ service:
   annotations: {}
   ## Specify a service type
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types
-  type: NodePort
-  port: 3310
-  nodePort: 32000
+  type: ClusterIP
+  port: 3306
+  # nodePort: 32000
   # loadBalancerIP:
 
 ## Pods Service Account
@@ -242,5 +242,5 @@ podLabels: {}
 initContainer:
   resources:
     requests:
-      memory: 100Mi
-      cpu: 100m
+      memory: 10Mi
+      cpu: 10m
