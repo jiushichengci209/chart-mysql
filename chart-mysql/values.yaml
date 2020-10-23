@@ -191,6 +191,12 @@ service:
   port: 3310
   # nodePort: 32000
   # loadBalancerIP:
+  
+## Configure the ingress
+## ref: http://kubernetes.io/docs/user-guide/ingress/
+ingress:
+  annotations: {}
+  host: mysql.ingress.com
 
 ## Pods Service Account
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
